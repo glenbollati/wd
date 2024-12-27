@@ -98,3 +98,13 @@ _wd(){
 	return 0
 }
 complete -F _wd wd
+
+# can use the following to set the alias "p" to whatever non-$HOME directory bash was last in
+# _prompt_command() {
+# 	# [...]
+# 	# Save latest working directory
+# 	local p=$(pwd)
+# 	[ "${p}" != "$HOME" ] && wd --set p "${p}"
+# } 
+#
+# PROMPT_COMMAND=_prompt_command
