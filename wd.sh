@@ -1,4 +1,4 @@
-# put this in .bashrc
+# put this (or source it) in .bashrc
 wd(){
 	local wdfile="$HOME/.wd"
 	touch "$wdfile"
@@ -28,7 +28,7 @@ wd(){
 				echo "You must provide an alias and a path"
 				return 1
 			fi
-			local path="$(realpath ${path})"
+			local path="$(realpath "${path}")"
 			local toadd="${key} ${path}"
 			printf "%s\n%s\n" "$toadd" "$(grep -Ev "^$key " $wdfile)" | sort > "$wdfile.tmp"
 			mv "$wdfile.tmp" "$wdfile"
@@ -99,12 +99,12 @@ _wd(){
 }
 complete -F _wd wd
 
-# can use the following to set the alias "p" to whatever non-$HOME directory bash was last in
+# uncomment the following to set the alias "p" to whatever non-$HOME directory bash was last in
 # _prompt_command() {
 # 	# [...]
 # 	# Save latest working directory
-# 	local p=$(pwd)
+# 	local p="$(pwd)"
 # 	[ "${p}" != "$HOME" ] && wd --set p "${p}"
 # } 
-#
+
 # PROMPT_COMMAND=_prompt_command
